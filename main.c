@@ -405,11 +405,11 @@ static void draw_calc(ShellState* st) {
     ui_string(wx + 22, wy + 52, st->calc_result, LIGHT_GREEN);
 }
 
-static void draw_about(void) {
+static void draw_about(ShellState* st) {
     int wx = 40, wy = TOPBAR_H + 24, ww = SCR_W - 80, wh = 112;
     draw_window(wx, wy, ww, wh, "About");
     ui_string(wx + 6, wy + 16, "Burger Shell", WHITE);
-    ui_string(wx + 6, wy + 28, "Very cool system!", GRAY);
+    ui_string(wx + 6, wy + 28, st->mouse_present ? "Mouse found"  : "Mouse not found", st->mouse_present ? LIGHT_GREEN : LIGHT_RED);
     ui_string(wx + 6, wy + 44, "Running as DOS program", LIGHT_CYAN);
     ui_string(wx + 6, wy + 60, "ESC to close", YELLOW);
 }
@@ -570,7 +570,7 @@ static void redraw_all(ShellState* st) {
     if (st->app == APP_FILES) draw_files(st);
     else if (st->app == APP_EDITOR) draw_editor(st);
     else if (st->app == APP_CALC) draw_calc(st);
-    else if (st->app == APP_ABOUT) draw_about();
+    else if (st->app == APP_ABOUT) draw_about(st);
     else if (st->app == APP_SNAKE) draw_snake(st);
 
     if (st->mouse_present) mouse_show();
@@ -718,7 +718,7 @@ static void handle_key(ShellState* st, char key) {
         return;
     }
 
-    //if(!mouse_present){
+    if(!st->mouse_present){
         if(key == 87){set_mouse_position(get_mouse_x(),get_mouse_y() - 3);}
         if(key == 65){set_mouse_position(get_mouse_x() - 3,get_mouse_y());}
         if(key == 83){set_mouse_position(get_mouse_x(),get_mouse_y() + 3);}
@@ -726,7 +726,7 @@ static void handle_key(ShellState* st, char key) {
         if(key == 64){set_mouse_buttons(1,0,0);}
         if(key == 35){set_mouse_buttons(0,1,0);}
         if(key == 36){set_mouse_buttons(0,0,1);}
-    //}
+    }
     
 
     if (key == 17 && st->app == APP_NONE) {
