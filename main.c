@@ -906,5 +906,5 @@ void main(void) {
     }
 
     printf("Burger Shell was eaten.\r\n");
-    printf("Burger advice you go to C: and start shell.exe\r\n");
+    printf("Burger advice you go to C: and start shell.com\r\n");
 }
