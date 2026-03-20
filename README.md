@@ -1,5 +1,10 @@
 # Burger Shell
 
+<img src="https://img.shields.io/github/languages/code-size/Shlepsss/BurgerShell" />
+<img src="https://img.shields.io/github/downloads/Shlepsss/BurgerShell/total" />
+<img src="https://img.shields.io/github/v/release/Shlepsss/BurgerShell" />
+<img src="https://img.shields.io/github/license/Shlepsss/BurgerShell" />
+
 Это DOS оболочка, похожая на Windows 1.0, является учебным проектом.
 Связи между этой оболочкой и бургерами - 0%
 Это не ОС под чистый BIOS, а только оболочка под DOS (real mode), которая использует:
